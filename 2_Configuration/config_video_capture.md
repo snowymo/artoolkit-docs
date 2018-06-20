@@ -1,7 +1,7 @@
-#Configuring Video Capture in ARToolKit
+# Configuring Video Capture in ARToolKit
 ARToolKit includes libARvideo, a cross-platform library which captures video from a variety of different sources. In general, most users of ARToolKit who have a single webcam attached to their system will never delve into the workings of this library. However, the module or modules inside this library generally allow for a degree of configuration to control parameters of the capture sources with which they interface.
 
-##Changing Video Configuration
+## Changing Video Configuration
 This section of the manual details some of the configuration options available with libARvideo.
 
 ### Setting Configuration at Run Time
@@ -11,7 +11,7 @@ The contents of the string are different for different capture sources because a
 
 The simplest way to specify the video configuration (without recompiling the example applications) is to create an [environment variable][general_environment_variables] `ARTOOLKIT5_VCONF` with the video configuration you wish to use.
 
-####ARToolKit Utilities
+#### ARToolKit Utilities
 Some of the ARToolKit utilities (including [calib_camera][config_camera_calibration], [calib_stereo][config_camera_stereo_tracking] and check_id) accept video configuration(s) as command-line parameters. The desired configuration is passed after a parameter "--vconf" (or --vconfL or --vconfR for calib_stereo). Note that if the video configuration string includes spaces, it must be quoted to prevent the shell passing it as multiple parameters.
 
 ### Setting Configuration Programmatically
@@ -24,7 +24,7 @@ Of course, editing source code requires recompiling for the changes to take effe
 #### ARToolKit for Unity
 ARToolKit for Unity allows you to specify video configuration separately for each supported platform directly in the Unity Editor.
 
-##Capture Sources and Switching Them
+## Capture Sources and Switching Them
 Where more than one capture source has been compiled into libARvideo on a given platform, you are allowed to switch between the options.
 
 This table lists the capture sources available on each platform. _Note: If you have a binary release of ARToolKit, not all of these capture sources may have been compiled into your copy!_:
@@ -52,7 +52,7 @@ This table lists the capture sources available on each platform. _Note: If you h
 (1): First version of ARToolKit Professional in which this capture source became available.
 (2): Version(s) of ARToolKit Professional in which this source is/was unavailable or unusable.
 
-####Video configuration options
+#### Video configuration options
 
 Notes on the tables below:
 
@@ -60,7 +60,7 @@ Notes on the tables below:
 -   Items separated by a vertical bar ("|") are mutually-exclusive options. Use only one.
 -   Items in italic typeface are placeholders, which you should replace. E.g. N indicates an integer number should be inserted.
 
-###AR_VIDEO_DEVICE_DUMMY
+### AR_VIDEO_DEVICE_DUMMY
 
 | video config string | usage notes                                                                                                                   | Default value                   | Avail.: (1) | Unavail.: (2) |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------|-------------|---------------|
@@ -70,7 +70,7 @@ Notes on the tables below:
 | -bufferpow2         | Requests that images are returned in a buffer which has power-of-two dimensions.                                              | Buffers are same size as image. | 4.4.3       |               |
 | -format=X           | Return images with pixels in format X, where X is one of the following format tokens: BGRA, RGBA, RGBA_5551, RGBA_4444, y420 | BGRA                            |             |               |
 
-###AR_VIDEO_DEVICE_IMAGE
+### AR_VIDEO_DEVICE_IMAGE
 
 | video config string           | usage notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Default value                                                                       | Avail.: (1) | Unavail.: (2) |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|-------------|---------------|
@@ -83,7 +83,7 @@ Notes on the tables below:
 | -image=pathname               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                                                                     |             |               |
 | -image="pathname with spaces" | Specifies image to be read from file. Pathname is relative to the current working directory, or an absolute pathname in the system-native format. May be used an arbitrary number of times in a single config. string.                                                                                                                                                                                                                                                                                                                                                        |                                                                                     | 4.6.2       |               |
 
-###AR_VIDEO_DEVICE_V4L
+### AR_VIDEO_DEVICE_V4L
 
 | video config string    | usage notes                               | Default value | Avail.: (1) | Unavail.: (2) |
 |------------------------|-------------------------------------------|---------------|-------------|---------------|
@@ -100,9 +100,9 @@ Notes on the tables below:
 | -mode=[PAL/NTSC/SECAM] | specifies TV signal mode.                 | NTSC          | 4.0.0       |               |
 | -format=[BGR/BGRA]     | specifies pixel format.                   | BGR           | 4.0.0       |               |
 
-###AR_VIDEO_DEVICE_DV
+### AR_VIDEO_DEVICE_DV
 
-###AR_VIDEO_DEVICE_1394CAM
+### AR_VIDEO_DEVICE_1394CAM
 
 Extra help on building this video capture module can be found on the page [Building libARvideo][libarvideo].
 
@@ -115,9 +115,9 @@ Extra help on building this video capture module can be found on the page [Build
 | -rate=N                                                                                                                                                                                                                                                                                            | specifies desired framerate of a FireWire camera. (1.875, 3.75, 7.5, 15, 30, 60)                      | 30                                             | 4.0.0       |               |
 | -reset                                                                                                                                                                                                                                                                                             | resets camera to factory default settings. This is required for DFK21AF04 when it has been connected. |                                                | 4.0.0       |               |
 
-###AR_VIDEO_DEVICE_SGI
+### AR_VIDEO_DEVICE_SGI
 
-###AR_VIDEO_DEVICE_WINDOWS_DIRECTSHOW
+### AR_VIDEO_DEVICE_WINDOWS_DIRECTSHOW
 
 Extra help on building this video capture module can be found on the page [Building libARvideo][libarvideo].
 
@@ -131,7 +131,7 @@ Extra help on building this video capture module can be found on the page [Build
 | -flipV | Flip camera image vertically. | -flipV (only if no config string is supplied). | 4.0.0644 | 4.0.065 |
 
 
-###AR_VIDEO_DEVICE_WINDOWS_DRAGONFLY
+### AR_VIDEO_DEVICE_WINDOWS_DRAGONFLY
 
 | video config string                                                                                                                                                                                                                                                                                         | usage notes                                                                                       | Default value | Avail.: (1) | Unavail.: (2) |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|---------------|-------------|---------------|
@@ -140,13 +140,13 @@ Extra help on building this video capture module can be found on the page [Build
 | -mode=[160x120YUV444 / 320x240YUV422 / 640x480YUV411 / 640x480YUV422 / 640x480RGB / 640x480Y8 / 640x480Y16 / 800x600YUV422 / 800x600RGB / 800x600Y8 / 800x600Y16 / 1024x768YUV422 / 1024x768RGB / 1024x768Y8 / 1024x768Y16 / 1280x960YUV422 / 1280x960RGB / 1280x960Y8 / 1280x960Y16 / 1600x1200YUV422 / 1600x1200RGB / 1600x1200Y8 / 1600x1200Y16] | Specifies input image format. N.B. Not all formats listed may be supported by ARToolKit.          | 1024x768RGB   | 4.6.0       |               |
 | -index=N                                                                                                                                                                                                                                                                                                    | Specifies bus index of device to use. (Range is from 0 to number of connected devices minus one.) | 0             | 4.6.0       |               |
 
-###AR_VIDEO_DEVICE_WINDOWS_HDCAM
+### AR_VIDEO_DEVICE_WINDOWS_HDCAM
 
 | video config string | usage notes | Default value | Avail.: (1) | Unavail.: (2) |
 |---------------------|-------------|---------------|-------------|---------------|
 | -device=WinHD | Select this device for use. | | | |
 
-###AR_VIDEO_DEVICE_QUICKTIME7
+### AR_VIDEO_DEVICE_QUICKTIME7
 The QuickTime7 video plugin uses the QTKit API introduced with QuickTime version 7 on Mac OS X. It offers improved performance over the previous QuickTime modules, however as of ARToolKit Professional v4.5.0, it does not yet support reading from file or network stream, so the previous QUICKTIME module should still be used in that case.
 
 | video config string | usage notes | Default value | Avail.: (1) | Unavail.: (2) |
@@ -159,7 +159,7 @@ The QuickTime7 video plugin uses the QTKit API introduced with QuickTime version
 | -nomuxed | Do not search for video from multiplexed video/audio devices (e.g. DV cams). | Off (i.e. muxed sources are included in the search) | 4.6.0 | |
 
 
-###AR_VIDEO_DEVICE_QUICKTIME
+### AR_VIDEO_DEVICE_QUICKTIME
 Extra help on building this video capture module can be found on the page [Building libARvideo][libarvideo].
 
 The QuickTime video plugin can operate in two modes:
@@ -167,7 +167,7 @@ The QuickTime video plugin can operate in two modes:
 -   In the first mode (the default), it acquires live video from a video capture source via QuickTime's video grabber. (Note that QuickTime for Windows does not come with a video digitizer component, and a third party component (e.g. [WinVDIG][winvidg] must be installed.)
 -   In the second mode, specified by passing a video configure parameter "-movie=*pathnameOrURL*", the plugin can open any valid QuickTime resource, including movies from disk, or movies streamed via http, rtsp or ftp protocols.
 
-####QuickTime Video Input from VDIG
+#### QuickTime Video Input from VDIG
 
 | video config string | usage notes | Default value | Avail.: (1) | Unavail.: (2) |
 |---------------------|-------------|---------------|-------------|---------------|
@@ -184,7 +184,7 @@ The QuickTime video plugin can operate in two modes:
 | -[no]singlebuffer | Use single buffering of captured video instead of triple-buffering. | -nosinglebuffer | 4.3.0 |
 
 
-####QuickTime Video Input from Movie File or Stream
+#### QuickTime Video Input from Movie File or Stream
 
 | video config string | usage notes | Default value | Avail.: (1) | Unavail.: (2) |
 |---------------------|-------------|---------------|-------------|---------------|
@@ -204,7 +204,7 @@ The QuickTime video plugin can operate in two modes:
 | -pixelformat=*cccc* | Ignored unless -offscreen is also passed, requests return of movie frames with pixels in format cccc, where cccc is either a numeric pixel format number or a valid 4-character-code for a pixel format. The following values are supported: 32, BGRA, RGBA, ABGR, 24, 24BG, 2vuy, yuvs. (See http://developer.apple.com/quicktime/icefloe/dispatch020.html) | Depends on platform; default for Mac OS X is 32 (i.e. ARGB), default for Windows is BGRA. | 4.3.0 |  |
 | -[no]singlebuffer | Ignored unless -offscreen is also passed, use single buffering of captured movie instead of triple-buffering. | -nosinglebuffer | 4.3.0 |  |
 
-###AR_VIDEO_DEVICE_QUICKTIME_OLD
+### AR_VIDEO_DEVICE_QUICKTIME_OLD
 
 | video config string   | usage notes                               | Default value | Avail.: (1) | Unavail.: (2) |
 |-----------------------|-------------------------------------------|---------------|-------------|---------------|
@@ -212,25 +212,25 @@ The QuickTime video plugin can operate in two modes:
 | -width=N              | Specify the width of the returned image.  | 640           | 4.0.0       |               |
 | -height=N             | Specify the height of the returned image. | 480           | 4.0.0       |               |
 
-###AR_VIDEO_DEVICE_WINDOWS_DSVIDEOLIB
+### AR_VIDEO_DEVICE_WINDOWS_DSVIDEOLIB
 
 | video config string          | usage notes                                                                                                                                                                                                                                | Default value                                                                                                                                                                                   | Avail.: (1) | Unavail.: (2) |
 |------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|---------------|
 | -device=WinDSVL              | Select this device for use.                                                                                                                                                                                                                |                                                                                                                                                                                                 | 4.1.0       |               |
 | *remainder of config string* | Specify either an XML string (i.e. beginning '<?xml') or a pathname to an XML file (e.g. 'config.XML'), conforming to the DSVideoLib XML Schema ([DsVideoLib.xsd](http://www.artoolworks.com/support/attachments/DsVideoLib.xsd)). [View an interactive SVG view of the DSVideoLib XML Schema](http://www.artoolworks.com/support/attachments/DsVideoLib.svg). | `<?xml version="1.0" encoding="UTF-8"?><dsvl_input><camera show_format_dialog="true" friendly_name=""><pixel_format><RGB32 flip_h="false" flip_v="true"/></pixel_format></camera></dsvl_input>` | 4.1.0       |               |
 
-###AR_VIDEO_DEVICE_GSTREAMER
+### AR_VIDEO_DEVICE_GSTREAMER
 
 | video config string          | usage notes                                                                                                     | Default value | Avail.: (1) | Unavail.: (2) |
 |------------------------------|-----------------------------------------------------------------------------------------------------------------|---------------|-------------|---------------|
 | -device=GStreamer            | Select this device for use.                                                                                     |               | 4.3.2       |               |
 | *remainder of config string* | Specifies a configuration string following the gst-launch syntax. See more at [GStreamer Configuration](config_video_capture_gstreamer). |               | 4.3.2       |               |
 
-###AR_VIDEO_DEVICE_IPHONE
+### AR_VIDEO_DEVICE_IPHONE
 The iOS video plugin is available on Apple iOS devices including iPhone 3G, iPhone 3GS, iPhone 4, iPod touch 4G and iPad 2.
 As of ARToolKit for iOS version 4.5.5 (release 4) the iOS video plugin can operate in either two modes; either acquiring live video from a camera on the iOS device, or playing a pre-recorded video file stored in the app's bundle resource directory.
 
-####iOS Video Input from Camera
+#### iOS Video Input from Camera
 
 | video config string | usage notes                                                                                                                                                                                                                                                                                                                 | Default value                                                      | Avail.: (1)         | Unavail.: (2) |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|---------------------|---------------|
@@ -244,7 +244,7 @@ As of ARToolKit for iOS version 4.5.5 (release 4) the iOS video plugin can opera
 | -height=*h*           | Crop native camera image height to h.                                                                                                                                                                                                                                                                                       | camera native image height for given preset (see above.)           | 4.4.3 (release 1.0) | 4.5.0-        |
 | -bufferpow2         | Requests that images are returned in a buffer which has power-of-two dimensions.                                                                                                                                                                                                                                            | camera native image size for given preset (see below.)             | 4.4.3 (release 1.0) | 4.5.0-        |
 
-####iOS Video Input from Movie File
+#### iOS Video Input from Movie File
 
 | video config string                      | usage notes                                                                                                                                                                                                                                                                                                                                                                      | Default value          | Avail.: (1)         | Unavail.: (2) |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|---------------------|---------------|
@@ -262,7 +262,7 @@ As of ARToolKit for iOS version 4.5.5 (release 4) the iOS video plugin can opera
 | -[no]flipv                               | Flip movie frame vertically.                                                                                                                                                                                                                                                                                                                                                     | -noflipv               | 4.5.5 (release 4.0) |               |
 | -pixelformat=*cccc*                      | Ignored unless -offscreen is also passed, requests return of movie frames with pixels in format cccc, where cccc is either a numeric pixel format number or a valid 4-character-code for a pixel format. The following values are supported: 32, BGRA, RGBA, ABGR, 24, 24BG, 2vuy, yuvs. (See http://developer.apple.com/quicktime/icefloe/dispatch020.html)                     | BGRA                   | 4.5.5 (release 4.0) |               |
 
-###AR_VIDEO_DEVICE_WINDOWS_MEDIA_FOUNDATION
+### AR_VIDEO_DEVICE_WINDOWS_MEDIA_FOUNDATION
 
 | video config string | usage notes | Default value | Avail.: (1) | Unavail.: (2) |
 |---------------------|-------------|---------------|-------------|---------------|
@@ -279,7 +279,7 @@ As of ARToolKit for iOS version 4.5.5 (release 4) the iOS video plugin can opera
 | -noShowFormats | Override a previous -showFormats option | -noShowFormats | 5.1.5 |  |
 
 
-###AR_VIDEO_DEVICE_WINDOWS_MEDIA_CAPTURE
+### AR_VIDEO_DEVICE_WINDOWS_MEDIA_CAPTURE
 
 | video config string | usage notes                                                                                                                                                                                                                                                                                                                                                    | Default value         | Avail.: (1) | Unavail.: (2) |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-------------|---------------|
